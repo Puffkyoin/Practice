@@ -13,6 +13,8 @@ namespace Practice
             //InTheShop();
             //PasswordEntry();
             //CurrencyConverter();
+            //passwordEntryCicle();
+            //bankDeposit();
         }
         
         public static void DamageCalculation() {
@@ -127,6 +129,53 @@ namespace Practice
 
             Console.WriteLine($"Ваш баланс {rub} рублей и {usd} долларов");
 
+        }
+
+        public static void passwordEntryCicle()
+        {
+            int tryCount = 5;
+            string password = "123456";
+            string userInput;
+
+            for (int i = 0; i < tryCount; i++)
+            {
+                Console.Write("Введите пароль:");
+                userInput = Console.ReadLine();
+
+
+                if (password == userInput)
+                {
+                    Console.WriteLine("Секретики");
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine($"У вас осталось - {tryCount - i} попыток");
+                }
+            }
+           
+        }
+
+        public static void bankDeposit()
+        {
+            float money;
+            int years;
+            int percent;
+            
+            Console.Write("Введите кол-во денег внесенных на вклад:");
+            money = Convert.ToSingle(Console.ReadLine());
+            Console.Write("На сколько лет открыт вклад:");
+            years = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Под какой процент:");
+            percent = Convert.ToInt32(Console.ReadLine());
+
+            for (int i = 0; i < years; i++)
+            {
+                money += money / 100 * percent;
+                Console.WriteLine($" В этом году у вас - {money} денег");
+                Console.ReadKey();
+            }
+            Console.WriteLine("Срок вашего вклада истёк.");
         }
     }
 }
