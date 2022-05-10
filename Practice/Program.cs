@@ -13,8 +13,9 @@ namespace Practice
             //InTheShop();
             //PasswordEntry();
             //CurrencyConverter();
-            //passwordEntryCicle();
-            //bankDeposit();
+            //PasswordEntryCicle();
+            //BankDeposit();
+            Battle();
         }
         
         public static void DamageCalculation() {
@@ -131,7 +132,7 @@ namespace Practice
 
         }
 
-        public static void passwordEntryCicle()
+        public static void PasswordEntryCicle()
         {
             int tryCount = 5;
             string password = "123456";
@@ -156,7 +157,7 @@ namespace Practice
            
         }
 
-        public static void bankDeposit()
+        public static void BankDeposit()
         {
             float money;
             int years;
@@ -176,6 +177,36 @@ namespace Practice
                 Console.ReadKey();
             }
             Console.WriteLine("Срок вашего вклада истёк.");
+        }
+
+        public static void Battle()
+        {
+            int youHealth = 100;
+            int yourDamage = 5;
+            int enemyHealth = 50;
+            int enemyDamage = 10;
+
+            while (youHealth>0 && enemyHealth>0)
+            {
+                youHealth -= enemyDamage;
+                enemyHealth -= yourDamage;
+                Console.WriteLine($"У вас {youHealth} жизней.");
+                Console.WriteLine($"У вашего врага {enemyHealth} жизней");
+                
+                if (enemyHealth <= 0 && youHealth <= 0)
+                {
+                    Console.WriteLine("Ничья!");
+                }
+                else if (youHealth <= 0)
+                {
+                    Console.WriteLine("Поражение!");
+                }
+                else if(enemyHealth<=0)
+                {
+                    Console.WriteLine("Победа!");
+                }
+            }
+            
         }
     }
 }
