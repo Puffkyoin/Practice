@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 
 namespace Practice
@@ -15,7 +16,9 @@ namespace Practice
             //CurrencyConverter();
             //PasswordEntryCicle();
             //BankDeposit();
-            Battle();
+            //Battle();
+            //Array();
+            //SeatReservation();
         }
         
         public static void DamageCalculation() {
@@ -207,6 +210,85 @@ namespace Practice
                 }
             }
             
+        }
+
+        public static void Array()
+        {
+            int[] array = { 1, 2, 3, 4, 5 };
+
+            // Задания 1,2 array sum
+            /*int sum = 0;
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                Console.Write($"{array[i]} ");
+                sum += array[i];
+            }
+            
+            Console.WriteLine($"\nСумма элементов массива равна {sum}.");*/
+            
+            
+            /*Задание 3 максимальное число в массиве
+            int maxValue = array[0];
+            
+            for (int i = 1; i < array.Length; i++)
+            {
+                if (maxValue < array[i])
+                {
+                    maxValue = array[i];
+                }
+            }
+            Console.WriteLine($"Максимальное число в массиве: {maxValue}");*/
+        }
+
+        public static void SeatReservation()
+        {
+            bool isOpen = true;
+            int[] tables = { 5, 4, 8, 9, 3, 7, 1 };
+            
+            while(isOpen)
+            {
+                Console.SetCursorPosition(0, 15);
+                for (int i = 0; i < tables.Length; i++)
+                {
+                    Console.WriteLine($"За столом - {i+1}, свободно {tables[i]} мест");
+                }
+                
+                Console.SetCursorPosition(0, 0);
+                Console.WriteLine("Администрирование кафэ.\n");
+                Console.WriteLine("\n1 - забронировать место \n\n2 - выход из программы.");
+                Console.Write("\nВведите номер команды:");
+                
+                switch(Convert.ToInt32(Console.ReadLine()))
+                {
+                    case 1:
+                        int userTable, userPlace;
+                        
+                        Console.Write("За каким столов вы хотите забронировать место:");
+                        userTable = Convert.ToInt32(Console.ReadLine()) - 1;
+                        if (tables.Length <= userTable || userTable < 0)
+                        {
+                            Console.WriteLine("Такого стола нет.");
+                            break;
+                        }
+                        
+                        Console.Write("Сколько мест вы хотите забронировать:");
+                        userPlace = Convert.ToInt32(Console.ReadLine());
+                        if (tables[userTable] < userPlace || userPlace < 0)
+                        {
+                            Console.WriteLine("Недостаточно мест.");
+                            break;
+                        }
+                        tables[userTable] -= userPlace; 
+                        break;
+                    
+                    case 2:
+                        isOpen = false;
+                        break;
+                }
+                Console.ReadKey();
+                Console.Clear();
+            }            
         }
     }
 }
