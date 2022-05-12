@@ -18,7 +18,7 @@ namespace Practice
             //BankDeposit();
             //Battle();
             //Array();
-            //SeatReservation();
+            SeatReservation();
         }
         
         public static void DamageCalculation() {
@@ -255,7 +255,7 @@ namespace Practice
                 }
                 
                 Console.SetCursorPosition(0, 0);
-                Console.WriteLine("Администрирование кафэ.\n");
+                Console.WriteLine("Администрирование кафе.\n");
                 Console.WriteLine("\n1 - забронировать место \n\n2 - выход из программы.");
                 Console.Write("\nВведите номер команды:");
                 
@@ -284,6 +284,9 @@ namespace Practice
                     
                     case 2:
                         isOpen = false;
+                        break;
+                    default:
+                        Console.WriteLine("Неверная команда! >:( ");
                         break;
                 }
                 Console.ReadKey();
