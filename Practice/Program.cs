@@ -9,7 +9,7 @@ namespace Practice
         public static void Main(string[] args)
         {
             // Выбери программу которую хочешь запустить.
-            
+
             //DamageCalculation();
             //InTheShop();
             //PasswordEntry();
@@ -18,10 +18,12 @@ namespace Practice
             //BankDeposit();
             //Battle();
             //Array();
-            SeatReservation();
+            //SeatReservation();
+            libraryManagementSystem();
         }
-        
-        public static void DamageCalculation() {
+
+        public static void DamageCalculation()
+        {
             float health;
             int armor;
             int damage;
@@ -67,10 +69,10 @@ namespace Practice
             Console.Write("Введите пароль:");
             userInput = Console.ReadLine();
 
-            if(userInput == password)
+            if (userInput == password)
             {
                 Console.WriteLine("Информация о процедуре 110-монтаук");
-            }    
+            }
             else
             {
                 Console.WriteLine("Летальный мeмагент запущен");
@@ -89,7 +91,8 @@ namespace Practice
             Console.Write("Введите баланс долларов:");
             usd = Convert.ToSingle(Console.ReadLine());
 
-            Console.WriteLine("Добро пожаловать в обменник валют. У нас вы можете обменять рубли в доллары и доллары в рубли.");
+            Console.WriteLine(
+                "Добро пожаловать в обменник валют. У нас вы можете обменять рубли в доллары и доллары в рубли.");
             Console.WriteLine("1 - обменять рубли на доллары");
             Console.WriteLine("2 - обменять доллары на рубли");
 
@@ -121,7 +124,6 @@ namespace Practice
                     {
                         usd -= currencyCount;
                         rub += currencyCount * usdToRub;
-
                     }
                     else
                     {
@@ -132,7 +134,6 @@ namespace Practice
             }
 
             Console.WriteLine($"Ваш баланс {rub} рублей и {usd} долларов");
-
         }
 
         public static void PasswordEntryCicle()
@@ -157,7 +158,6 @@ namespace Practice
                     Console.WriteLine($"У вас осталось - {tryCount - i} попыток");
                 }
             }
-           
         }
 
         public static void BankDeposit()
@@ -165,7 +165,7 @@ namespace Practice
             float money;
             int years;
             int percent;
-            
+
             Console.Write("Введите кол-во денег внесенных на вклад:");
             money = Convert.ToSingle(Console.ReadLine());
             Console.Write("На сколько лет открыт вклад:");
@@ -179,6 +179,7 @@ namespace Practice
                 Console.WriteLine($" В этом году у вас - {money} денег");
                 Console.ReadKey();
             }
+
             Console.WriteLine("Срок вашего вклада истёк.");
         }
 
@@ -189,13 +190,13 @@ namespace Practice
             int enemyHealth = 50;
             int enemyDamage = 10;
 
-            while (youHealth>0 && enemyHealth>0)
+            while (youHealth > 0 && enemyHealth > 0)
             {
                 youHealth -= enemyDamage;
                 enemyHealth -= yourDamage;
                 Console.WriteLine($"У вас {youHealth} жизней.");
                 Console.WriteLine($"У вашего врага {enemyHealth} жизней");
-                
+
                 if (enemyHealth <= 0 && youHealth <= 0)
                 {
                     Console.WriteLine("Ничья!");
@@ -204,12 +205,11 @@ namespace Practice
                 {
                     Console.WriteLine("Поражение!");
                 }
-                else if(enemyHealth<=0)
+                else if (enemyHealth <= 0)
                 {
                     Console.WriteLine("Победа!");
                 }
             }
-            
         }
 
         public static void Array()
@@ -226,8 +226,8 @@ namespace Practice
             }
             
             Console.WriteLine($"\nСумма элементов массива равна {sum}.");*/
-            
-            
+
+
             /*Задание 3 максимальное число в массиве
             int maxValue = array[0];
             
@@ -245,25 +245,25 @@ namespace Practice
         {
             bool isOpen = true;
             int[] tables = { 5, 4, 8, 9, 3, 7, 1 };
-            
-            while(isOpen)
+
+            while (isOpen)
             {
                 Console.SetCursorPosition(0, 15);
                 for (int i = 0; i < tables.Length; i++)
                 {
-                    Console.WriteLine($"За столом - {i+1}, свободно {tables[i]} мест");
+                    Console.WriteLine($"За столом - {i + 1}, свободно {tables[i]} мест");
                 }
-                
+
                 Console.SetCursorPosition(0, 0);
                 Console.WriteLine("Администрирование кафе.\n");
                 Console.WriteLine("\n1 - забронировать место \n\n2 - выход из программы.");
                 Console.Write("\nВведите номер команды:");
-                
-                switch(Convert.ToInt32(Console.ReadLine()))
+
+                switch (Convert.ToInt32(Console.ReadLine()))
                 {
                     case 1:
                         int userTable, userPlace;
-                        
+
                         Console.Write("За каким столов вы хотите забронировать место:");
                         userTable = Convert.ToInt32(Console.ReadLine()) - 1;
                         if (tables.Length <= userTable || userTable < 0)
@@ -271,7 +271,7 @@ namespace Practice
                             Console.WriteLine("Такого стола нет.");
                             break;
                         }
-                        
+
                         Console.Write("Сколько мест вы хотите забронировать:");
                         userPlace = Convert.ToInt32(Console.ReadLine());
                         if (tables[userTable] < userPlace || userPlace < 0)
@@ -279,9 +279,10 @@ namespace Practice
                             Console.WriteLine("Недостаточно мест.");
                             break;
                         }
-                        tables[userTable] -= userPlace; 
+
+                        tables[userTable] -= userPlace;
                         break;
-                    
+
                     case 2:
                         isOpen = false;
                         break;
@@ -289,9 +290,94 @@ namespace Practice
                         Console.WriteLine("Неверная команда! >:( ");
                         break;
                 }
+
                 Console.ReadKey();
                 Console.Clear();
-            }            
+            }
+        }
+
+        public static void libraryManagementSystem()
+        {
+            string[,] books =
+            {
+                { "Пушкин", "Лермонтов", "Глуховский" },
+                { "Стивен Кинг", "Говард Лавкрафт", "Брэм Стокет" },
+                { "Донцова", "Ален Карр", "Игорь Прокопенко" }
+            };
+            bool isOpen = true;
+
+            while (isOpen)
+            {
+                Console.WriteLine("\nДобро пожаловать в библиотеку. \n\nВыбирете действие из списка:");
+                Console.WriteLine(
+                    "1 - найти книгу по индекксу. \n2 - найти книгу по автору. \n3 - вывести все книги. \n4 - выйти из библиотеки. ");
+                Console.Write("Введите пункт меню:");
+                switch (Convert.ToInt32(Console.ReadLine()))
+                {
+                    case 1:
+                        int rows;
+                        int cals;
+                        Console.Write("Введите номер полки:");
+                        rows = Convert.ToInt32(Console.ReadLine()) - 1;
+
+                        Console.Write("Введите номер книги:");
+                        cals = Convert.ToInt32(Console.ReadLine()) - 1;
+
+                        if (rows > books.GetLength(0))
+                            Console.WriteLine("\nТакой полки не существует.");
+                        else if (cals > books.GetLength(1))
+                            Console.WriteLine("\nКниги с таким номером не существует.");
+                        else
+                            Console.WriteLine($"\nЭто книга - {books[rows, cals]}");
+
+                        break;
+                    case 2:
+                        string author;
+                        bool authorIsFind = false;
+                        Console.Write("Введите нужного автора:");
+                        author = Console.ReadLine();
+
+                        for (int y = 0; y < books.GetLength(0); y++)
+                        {
+                            for (int x = 0; x < books.GetLength(1); x++)
+                            {
+                                if (author.ToLower() == books[y, x].ToLower())
+                                {
+                                    Console.WriteLine(
+                                        $"Автор - {books[y, x]} находится под индексом {y + 1} | {x + 1}");
+                                    authorIsFind = true;
+                                }
+                            }
+                        }
+
+                        if (authorIsFind == false)
+                            Console.WriteLine("Такого автора нет.");
+
+                        break;
+                    case 3:
+                        Console.WriteLine("\nВесь список авторов:\n");
+                        for (int y = 0; y < books.GetLength(0); y++)
+                        {
+                            for (int x = 0; x < books.GetLength(1); x++)
+                            {
+                                Console.WriteLine(books[y, x]);
+                            }
+                        }
+
+                        break;
+                    case 4:
+                        isOpen = false;
+                        break;
+                    default:
+                        Console.WriteLine("Такого пункта в меню нет.");
+
+                        break;
+                }
+
+                Console.Write("Нажмите любую клавишу для продолжения.");
+                Console.ReadKey();
+                Console.Clear();
+            }
         }
     }
 }
